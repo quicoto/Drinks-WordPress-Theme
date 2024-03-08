@@ -32,9 +32,7 @@
 
 <body <?php body_class(); ?> data-bs-theme="dark">
 <?php wp_body_open(); ?>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'drinks' ); ?></a>
-
+<main id="page" class="site">
 	<header id="masthead" class="site-header container">
 		<div class="site-branding">
 			<?php

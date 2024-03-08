@@ -137,3 +137,11 @@ function custom_taxonomy_tags() {
 }
 
 add_action( 'init', 'custom_taxonomy_tags', 0 );
+
+function wporg_add_custom_post_types($query) {
+	if ( is_home() && $query->is_main_query() ) {
+		$query->set( 'post_type', array( 'drinks' ) );
+	}
+	return $query;
+}
+add_action('pre_get_posts', 'wporg_add_custom_post_types');
