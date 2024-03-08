@@ -12,7 +12,7 @@
     "node-sass": "^9.0.0"
   },
   "scripts": {
-    "watch": "node-sass sass/ -o ./ --source-map true --output-style expanded --indent-type tab --indent-width 1 -w",
+    "watch:css": "node-sass sass/ -o ./ --output-style expanded -w",
     "compile:css": "node-sass sass/ -o ./ --output-style compressed",
     "build": "npm run compile:css"
   },

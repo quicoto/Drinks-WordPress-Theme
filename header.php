@@ -33,42 +33,32 @@
 <body <?php body_class(); ?> data-bs-theme="dark">
 <?php wp_body_open(); ?>
 <main id="page" class="site">
-	<header id="masthead" class="site-header container">
+	<header id="masthead" class="site-header container mt-4">
 		<div class="site-branding">
 			<?php
 			if ( is_front_page() && is_home() ) :
 				?>
-				<h1 class="site-title">
+				<h1 class="site-title mb-4">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-						<img src="<?= get_stylesheet_directory_uri() ?>/logo.svg" alt="<?php bloginfo( 'name' ); ?>">
+						<img class="site-logo" src="<?= get_stylesheet_directory_uri() ?>/logo.svg" alt="<?php bloginfo( 'name' ); ?>">
 					</a>
 				</h1>
 				<?php
 			else :
 				?>
-				<p class="site-title">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-							<img src="<?= get_stylesheet_directory_uri() ?>/logo.svg" alt="<?php bloginfo( 'name' ); ?>">
-						</a>
+				<p class="site-title mb-4">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+						<img class="site-logo" src="<?= get_stylesheet_directory_uri() ?>/logo.svg" alt="<?php bloginfo( 'name' ); ?>">
+					</a>
 				</p>
 				<?php
 			endif;
+
 			$drinks_description = get_bloginfo( 'description', 'display' );
+
 			if ( $drinks_description || is_customize_preview() ) :
 				?>
-				<p class="site-description"><?php echo $drinks_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+				<p class="site-description"><?php echo $drinks_description; ?></p>
 			<?php endif; ?>
 		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'drinks' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->

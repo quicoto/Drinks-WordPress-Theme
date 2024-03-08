@@ -22,5 +22,14 @@ Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
 
+$enable-rfs: false;
+$enable-validation-icons: false;
+$enable-grid-classes: false;
+$enable-gradients: false;
+
 // Import bootstrap
 @import "node_modules/bootstrap/scss/bootstrap";
+
+// Import custom styles
+@import "_header";
+@import "_layout";

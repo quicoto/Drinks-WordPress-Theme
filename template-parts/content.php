@@ -9,44 +9,28 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+<article id="post-<?php the_ID(); ?>" <?php post_class('drink'); ?>>
+	<div class="entry-thumbnail">
 		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
+			// Show post thumbnails
+			if ( has_post_thumbnail() ) {
+				the_post_thumbnail('full', ['class' => 'rounded' ]);
+			}
 		?>
-	</header><!-- .entry-header -->
+	</div>
+	<div class="entry-data">
+		<header class="entry-header">
+			<?php
+				the_title( '<h2 class="entry-title">', '</h2>' );
+			?>
+		</header><!-- .entry-header -->
 
-	<div class="entry-content">
-		<?php
-		the_content(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'drinks' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			)
-		);
+		<div class="entry-content">
+			<?php the_content(); ?>
+		</div><!-- .entry-content -->
 
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'drinks' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
-	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		footer?
-	</footer><!-- .entry-footer -->
+		<footer class="entry-footer">
+			<button type="button" class="btn btn-outline-primary">Check-in</button>
+		</footer><!-- .entry-footer -->
+	</div>
 </article><!-- #post-<?php the_ID(); ?> -->
