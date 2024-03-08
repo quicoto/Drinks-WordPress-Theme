@@ -100,12 +100,11 @@ add_action( 'widgets_init', 'drinks_widgets_init' );
  */
 function drinks_scripts() {
 	wp_enqueue_style( 'drinks-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'drinks-style', 'rtl', 'replace' );
-
-	wp_enqueue_script( 'drinks-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+	wp_dequeue_style( 'wp-block-library' ); // Remove block library CSS
 }
 add_action( 'wp_enqueue_scripts', 'drinks_scripts' );
+
+include( get_template_directory() . '/inc/automatic-updates.php' );
+include( get_template_directory() . '/inc/private-site.php' );
+include( get_template_directory() . '/inc/custom-post-type.php' );
+include( get_template_directory() . '/inc/meta-box.php' );
