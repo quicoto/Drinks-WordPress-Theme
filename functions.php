@@ -21,17 +21,6 @@ if ( ! defined( '_S_VERSION' ) ) {
  */
 function drinks_setup() {
 	/*
-		* Make theme available for translation.
-		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on drinks, use a find and replace
-		* to change 'drinks' to the name of your theme in all the template files.
-		*/
-	load_theme_textdomain( 'drinks', get_template_directory() . '/languages' );
-
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
-
-	/*
 		* Let WordPress manage the document title.
 		* By adding theme support, we declare that this theme does not use a
 		* hard-coded <title> tag in the document head, and expect WordPress to
@@ -61,24 +50,8 @@ function drinks_setup() {
 		'html5',
 		array(
 			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
 			'style',
 			'script',
-		)
-	);
-
-	// Set up the WordPress core custom background feature.
-	add_theme_support(
-		'custom-background',
-		apply_filters(
-			'drinks_custom_background_args',
-			array(
-				'default-color' => 'ffffff',
-				'default-image' => '',
-			)
 		)
 	);
 
@@ -101,18 +74,6 @@ function drinks_setup() {
 	);
 }
 add_action( 'after_setup_theme', 'drinks_setup' );
-
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function drinks_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'drinks_content_width', 640 );
-}
-add_action( 'after_setup_theme', 'drinks_content_width', 0 );
 
 /**
  * Register widget area.
@@ -148,31 +109,3 @@ function drinks_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'drinks_scripts' );
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
-
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
-
