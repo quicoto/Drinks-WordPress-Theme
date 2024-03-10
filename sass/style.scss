@@ -27,9 +27,11 @@ $enable-validation-icons: false;
 $enable-grid-classes: false;
 $enable-gradients: false;
 
+
 // Import bootstrap
 @import "node_modules/bootstrap/scss/bootstrap";
 
+@import "_variables";
 // Import custom styles
 @import "_header";
 @import "_layout";
