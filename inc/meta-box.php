@@ -19,7 +19,7 @@ function drinks_price_meta_box_callback( $post ) {
   $drinks_stored_meta = get_post_meta( $post->ID );
   ?>
   <div>
-      <input required type="number" size=10 id="price" name="price" value="<?php if ( ! empty ( $drinks_stored_meta['price'] ) ) echo esc_attr( $drinks_stored_meta['price'][0] ); ?>" />
+      <input required type="text" size=10 id="price" name="price" value="<?php if ( ! empty ( $drinks_stored_meta['price'] ) ) echo esc_attr( $drinks_stored_meta['price'][0] ); ?>" />
   </div>
   <?php
 }
