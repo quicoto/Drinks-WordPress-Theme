@@ -78,13 +78,15 @@ add_action( 'after_setup_theme', 'drinks_setup' );
 /**
  * Enqueue scripts and styles.
  */
-function drinks_scripts() {
+function drinks_css() {
 	wp_enqueue_style( 'drinks-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_dequeue_style( 'wp-block-library' ); // Remove block library CSS
 }
-add_action( 'wp_enqueue_scripts', 'drinks_scripts' );
+add_action( 'wp_enqueue_scripts', 'drinks_css' );
 
 include( get_template_directory() . '/inc/automatic-updates.php' );
 include( get_template_directory() . '/inc/private-site.php' );
 include( get_template_directory() . '/inc/custom-post-type.php' );
 include( get_template_directory() . '/inc/meta-box.php' );
+include( get_template_directory() . '/inc/ajax.php' );
+

@@ -41,11 +41,17 @@
 			<?php endif; ?>
 		</header><!-- .entry-header -->
 
-		<section class="entry-content mb-4">
+		<section class="entry-content mb-md-4">
+			<?php
+				$last_drank = get_post_meta( get_the_ID(), 'last_drank', true );
+				$last_drank = $last_drank ? date('F j, Y', strtotime($last_drank)) : '';
+
+				$times_drank = get_post_meta( get_the_ID(), 'times_drank', true );
+			?>
 			<ul>
 				<li><strong>Price</strong>: <?php echo get_post_meta( get_the_ID(), 'price', true ); ?>€</li>
-				<li><strong>Last drank</strong>: <?php echo get_post_meta( get_the_ID(), 'last_drank', true ); ?></li>
-				<li><strong>Times drank</strong>: <?php echo get_post_meta( get_the_ID(), 'times_drank', true ); ?></li>
+				<li><strong>Last drank</strong>: <?php echo $last_drank ? $last_drank : 'never' ?></li>
+				<li><strong>Times drank</strong>: <span class="times-drank" data-drink="<?php echo get_the_ID(); ?>"><?php echo $times_drank ? $times_drank : 0; ?></span></li>
 			</ul>
 			<div>
 				<?php the_content(); ?>
@@ -61,17 +67,19 @@
 							$tag_link = get_term_link( $tag );
 							echo '<a class="badge rounded-pill text-bg-primary text-decoration-none me-2 mb-2" href="' . esc_url( $tag_link ) . '">' . $tag->name . '</a>';
 						}
-
 					?>
 				</div>
 			<?php endif; ?>
 
 		</section><!-- .entry-content -->
 
-		<footer class="entry-footer">
-			<div class="d-grid gap-2">
-				<button type="button" class="btn btn-outline-primary">Check-in</button>
-			</div>
-		</footer><!-- .entry-footer -->
 	</div>
+	<footer class="entry-footer">
+		<div class="d-grid gap-2">
+			<button class="btn btn-outline-success checkin" type="button" data-drink="<?php echo get_the_ID(); ?>">
+				<span class="spinner spinner-border spinner-border-sm" hidden></span>
+				<span class="text">Check-in</span>
+			</button>
+		</div>
+	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

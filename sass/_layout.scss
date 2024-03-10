@@ -3,6 +3,10 @@
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   .wp-post-image {
     aspect-ratio: 1 / 1;
     object-fit: cover;
@@ -18,6 +22,7 @@
 
   .drink {
     display: flex;
+    flex-wrap: wrap;
     border-bottom: 1px solid #807f7f;
     padding-bottom: 2rem;
     margin-bottom: 2rem;
@@ -31,6 +36,16 @@
     .entry-header {
       display: flex;
       gap: 1rem;
+    }
+
+    .entry-footer {
+      width: 100%;
+    }
+
+    .entry-tags {
+      @include media-breakpoint-up(lg) {
+        min-height: 70px;
+      }
     }
   }
 }

@@ -11,7 +11,7 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer container">
+	<footer id="colophon" class="site-footer container pt-4 pb-4">
 		<div class="site-info">
 			<a href="https://github.com/quicoto/Drinks-WordPress-Theme">GitHub</a>
 		</div><!-- .site-info -->
